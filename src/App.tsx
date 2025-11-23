@@ -48,8 +48,8 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen bg-black flex items-center justify-center p-3 sm:p-4">
-        <div className="bg-[#1c1c1c] rounded-3xl shadow-2xl p-4 py-6 w-full max-w-xs">
+      <div className="min-h-screen bg-black flex items-center justify-center px-3 sm:px-4">
+        <div className="bg-[#1c1c1c] rounded-3xl shadow-2xl p-6 w-full max-w-xs">
           {/* Display */}
           <div className="rounded-2xl mb-6 text-right h-36 flex items-end justify-end">
             <p className="text-white text-5xl font-light truncate">
