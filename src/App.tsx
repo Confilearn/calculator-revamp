@@ -48,11 +48,11 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen bg-[#1c1c1c] flex items-center justify-center px-1 sm:px-4">
-        <div className="bg-black rounded-3xl shadow-2xl p-4 py-6 w-full max-w-xs">
+      <div className="min-h-screen bg-[#1c1c1c] flex items-center justify-center px-1 sm:px-1">
+        <div className="bg-black rounded-3xl shadow-2xl p-4 py-7 w-full max-w-[330px] space-y-7">
           {/* Display */}
-          <div className="rounded-2xl mb-6 text-right h-38 flex items-end justify-end">
-            <p className="text-white text-6xl font-light truncate">
+          <div className="rounded-2xl mb-6 text-right h-42 flex items-end justify-end">
+            <p className="text-white text-7xl font-light truncate">
               {(() => {
                 const val = display || "0";
                 return val.replace(/-?\d+(\.\d+)?/g, (num) => {
