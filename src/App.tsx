@@ -5,7 +5,7 @@ function App() {
   const { display, inputValue, calculate, clear, deleteLast } = useCalculator();
 
   const buttons = [
-    ["AC", "←", "%", "÷"],
+    ["C", "←", "%", "÷"],
     ["7", "8", "9", "×"],
     ["4", "5", "6", "-"],
     ["1", "2", "3", "+"],
@@ -13,7 +13,7 @@ function App() {
   ];
 
   const handleClick = (value: string) => {
-    if (value === "AC") {
+    if (value === "C") {
       clear();
     } else if (value === "←") {
       deleteLast();
@@ -48,12 +48,26 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen bg-black flex items-center justify-center px-3 sm:px-4">
-        <div className="bg-[#1c1c1c] rounded-3xl shadow-2xl p-4 py-6 w-full max-w-xs">
+      <div className="min-h-screen bg-[#1c1c1c] flex items-center justify-center px-1 sm:px-4">
+        <div className="bg-black rounded-3xl shadow-2xl p-4 py-6 w-full max-w-xs">
           {/* Display */}
-          <div className="rounded-2xl mb-6 text-right h-36 flex items-end justify-end">
-            <p className="text-white text-5xl font-light truncate">
-              {display || "0"}
+          <div className="rounded-2xl mb-6 text-right h-38 flex items-end justify-end">
+            <p className="text-white text-6xl font-light truncate">
+              {(() => {
+                const val = display || "0";
+                return val.replace(/-?\d+(\.\d+)?/g, (num) => {
+                  const [intPart, dec] = num.split(".");
+                  const sign = intPart.startsWith("-") ? "-" : "";
+                  const absInt = sign ? intPart.slice(1) : intPart;
+                  const formattedInt = absInt.replace(
+                    /\B(?=(\d{3})+(?!\d))/g,
+                    ","
+                  );
+                  return dec
+                    ? `${sign}${formattedInt}.${dec}`
+                    : `${sign}${formattedInt}`;
+                });
+              })()}
             </p>
           </div>
 
@@ -73,10 +87,10 @@ function App() {
                       ${isZero ? "col-span-2" : ""}
                       ${
                         isOperator
-                          ? "bg-[#ff9500] hover:bg-[#ff9500]/80 text-white"
+                          ? "bg-[#ff9f09] hover:bg-[#ff9f09]/80 text-white"
                           : isTop
-                          ? "bg-[#d4d4d2] hover:bg-[#d4d4d2]/80 text-black"
-                          : "bg-[#505050] hover:bg-[#505050]/80 text-white"
+                          ? "bg-[#a5a5a5] hover:bg-[#a5a5a5]/80 text-black"
+                          : "bg-[#3c3c3c] hover:bg-[#3c3c3c]/80 text-white"
                       }
                       text-2xl font-medium rounded-full h-16 transition-all active:scale-95
                     `}
